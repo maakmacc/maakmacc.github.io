@@ -123,6 +123,48 @@
         #experience .card-front, #experience .card-back { background-color: var(--experience-color); }
         #contact .card-front, #contact .card-back { background-color: var(--contact-color); }
 
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .project-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .project-item h3 {
+            margin-top: 0;
+            color: var(--title-color);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -359,7 +401,20 @@
                     </div>
                     <div class="card-back">
                         <h2>My Projects</h2>
-                        <!-- Add your projects here -->
+                        <div class="project-grid">
+                            <div class="project-item">
+                                <h3>B2B Landing Page</h3>
+                                <img src="path/to/b2b-landing-page-image.jpg" alt="B2B Landing Page" class="project-image">
+                                <p>Implemented and coded a B2B eCommerce Platform landing page, focusing on user experience and conversion optimization.</p>
+                            </div>
+                            <div class="project-item">
+                                <h3>eCommerce Feature Development</h3>
+                                <div class="video-container">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/CfnPR3P3sBk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                </div>
+                                <p>Developed a key feature for an eCommerce platform, enhancing user interaction and functionality.</p>
+                            </div>
+                        </div>
                         <button class="back-btn">Back</button>
                     </div>
                 </div>
