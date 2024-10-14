@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mark Macnamara - Software and Web Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
         :root {
             --bg-color: #f0f0f0;
             --card-bg: #ffffff;
@@ -41,22 +41,6 @@
             height: 100%;
         }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            width: 100%;
-        }
-
-        .skill-item {
-            background-color: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            padding: 10px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
         .header {
             background-color: var(--card-bg);
             border-radius: 20px;
@@ -81,23 +65,14 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             flex-grow: 1;
-            position: relative;
         }
 
         .card {
             background-color: var(--card-bg);
             border-radius: 20px;
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: relative;
-            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
         }
 
         .card:hover {
@@ -106,54 +81,8 @@
 
         .card h2 {
             font-size: 1.8rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: var(--title-color);
-        }
-
-        .card p {
-            font-size: 1rem;
-            color: var(--subtitle-color);
-        }
-
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .card-back {
-            transform: rotateY(180deg);
-            overflow-y: auto;
-        }
-
-        .card.flipped {
-            transform: rotateY(180deg);
-        }
-
-        .card.expanded {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 10;
-            transform: rotateY(180deg);
-        }
-
-        .back-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 5px 10px;
-            background-color: var(--title-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
         }
 
         #skills { background-color: var(--skills-color); }
@@ -161,19 +90,45 @@
         #experience { background-color: var(--experience-color); }
         #contact { background-color: var(--contact-color); }
 
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .tech-item {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tech-item i {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
         .contact-form {
             display: flex;
             flex-direction: column;
-            width: 100%;
-            max-width: 300px;
+        }
+
+        .contact-form label {
+            margin-bottom: 5px;
         }
 
         .contact-form input,
         .contact-form textarea {
-            margin-bottom: 10px;
-            padding: 8px;
+            margin-bottom: 15px;
+            padding: 10px;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 5px;
+            font-family: inherit;
         }
 
         .contact-form button {
@@ -181,8 +136,47 @@
             background-color: var(--title-color);
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #333;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            color: var(--title-color);
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #007bff;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--title-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
         }
 
         @media (max-width: 768px) {
@@ -193,6 +187,7 @@
     </style>
 </head>
 <body>
+    <button class="dark-mode-toggle" aria-label="Toggle dark mode">🌓</button>
     <div class="container">
         <header class="header">
             <h1>Mark Macnamara</h1>
@@ -200,93 +195,61 @@
         </header>
         <main class="content">
             <div class="card" id="skills">
-                <div class="card-front">
-                    <h2>Skills</h2>
-                    <p>Click to see portfolio technologies</p>
-                </div>
-                <div class="card-back">
-                    <h2>Portfolio Technologies Used to Make this Project</h2>
-                    <div class="skills-grid">
-                        <div class="skill-item">HTML5</div>
-                        <div class="skill-item">CSS3</div>
-                        <div class="skill-item">JavaScript</div>
-                        <div class="skill-item">Responsive Design</div>
-                        <div class="skill-item">CSS Grid</div>
-                        <div class="skill-item">Flexbox</div>
-                        <div class="skill-item">CSS Animations</div>
-                        <div class="skill-item">Web Accessibility</div>
-                        <div class="skill-item">Version Control</div>
-                    </div>
+                <h2>Portfolio Technologies</h2>
+                <div class="tech-grid">
+                    <div class="tech-item"><i class="fab fa-html5"></i>HTML5</div>
+                    <div class="tech-item"><i class="fab fa-css3-alt"></i>CSS3</div>
+                    <div class="tech-item"><i class="fab fa-js"></i>JavaScript</div>
+                    <div class="tech-item"><i class="fas fa-mobile-alt"></i>Responsive Design</div>
+                    <div class="tech-item"><i class="fas fa-th"></i>CSS Grid</div>
+                    <div class="tech-item"><i class="fas fa-box"></i>Flexbox</div>
+                    <div class="tech-item"><i class="fas fa-magic"></i>CSS Animations</div>
+                    <div class="tech-item"><i class="fas fa-universal-access"></i>Web Accessibility</div>
+                    <div class="tech-item"><i class="fab fa-git-alt"></i>Version Control</div>
                 </div>
             </div>
             <div class="card" id="projects">
-                <div class="card-front">
-                    <h2>Projects</h2>
-                    <p>Click to view my projects</p>
-                </div>
-                <div class="card-back">
-                    <h2>My Projects</h2>
-                    <ul>
-                        <li>E-commerce Platform</li>
-                        <li>Data Analysis Dashboard</li>
-                        <li>Mobile App for Task Management</li>
-                    </ul>
-                    <button class="back-btn">Back</button>
-                </div>
+                <h2>Projects</h2>
+                <p>Click to view my projects</p>
+                <!-- Add your projects here -->
             </div>
             <div class="card" id="experience">
-                <div class="card-front">
-                    <h2>Experience</h2>
-                    <p>Click to see my work history</p>
-                </div>
-                <div class="card-back">
-                    <h2>Work Experience</h2>
-                    <p>Software Developer at Unleashed Software (2022-Present)</p>
-                    <p>Data Integrity Analyst at AGB Nielsen (2019-2022)</p>
-                    <p>Web Developer at Lime Online (2016-2017)</p>
-                    <button class="back-btn">Back</button>
-                </div>
+                <h2>Experience</h2>
+                <p>Click to see my work history</p>
+                <!-- Add your work experience here -->
             </div>
             <div class="card" id="contact">
-                <div class="card-front">
-                    <h2>Contact</h2>
-                    <p>Click to get in touch</p>
-                </div>
-                <div class="card-back">
-                    <h2>Contact Me</h2>
-                    <form class="contact-form">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea placeholder="Your Message" rows="4" required></textarea>
-                        <button type="submit">Send Message</button>
-                    </form>
+                <h2>Contact Me</h2>
+                <form class="contact-form" id="contactForm">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                    
+                    <button type="submit">Send Message</button>
+                </form>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                    <a href="mailto:your.email@example.com" aria-label="Email Me"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </main>
     </div>
     <script>
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('click', () => {
-                if (card.id === 'skills' || card.id === 'contact') {
-                    card.classList.toggle('flipped');
-                } else {
-                    card.classList.add('flipped', 'expanded');
-                }
-            });
+        document.querySelector('.dark-mode-toggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
         });
 
-        document.querySelectorAll('.back-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const card = btn.closest('.card');
-                card.classList.remove('flipped', 'expanded');
-            });
-        });
-
-        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             // Here you would typically send the form data to a server
             alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
         });
     </script>
 </body>
