@@ -237,6 +237,59 @@
         @media (max-width: 768px) {
             .content {
                 grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, minmax(200px, auto));
+                gap: 15px;
+            }
+
+            .card {
+                height: auto;
+                min-height: 200px;
+            }
+
+            .card h2 {
+                font-size: 1.2rem;
+            }
+
+            .card p {
+                font-size: 0.8rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            .content {
+                gap: 10px;
+            }
+
+            .card {
+                min-height: 150px;
+            }
+
+            .card h2 {
+                font-size: 1rem;
+            }
+
+            .card p {
+                font-size: 0.7rem;
+            }
+
+            .header h1 {
+                font-size: 1.2rem;
+            }
+
+            .header p {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -377,36 +430,36 @@
         </main>
     </div>
     <script>
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('click', () => {
-                if (card.id === 'projects' || card.id === 'experience') {
-                    card.classList.add('expanded');
-                    card.querySelector('.card-inner').style.transform = 'rotateY(180deg)';
-                } else {
-                    card.classList.toggle('flipped');
-                }
-            });
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', () => {
+            if (card.id === 'projects' || card.id === 'experience') {
+                card.classList.add('expanded');
+                card.querySelector('.card-inner').style.transform = 'rotateY(180deg)';
+            } else {
+                card.classList.toggle('flipped');
+            }
         });
+    });
 
-        document.querySelectorAll('.back-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const card = btn.closest('.card');
-                card.classList.remove('expanded');
-                card.querySelector('.card-inner').style.transform = 'rotateY(0deg)';
-            });
+    document.querySelectorAll('.back-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const card = btn.closest('.card');
+            card.classList.remove('expanded');
+            card.querySelector('.card-inner').style.transform = 'rotateY(0deg)';
         });
+    });
 
-        document.querySelector('.dark-mode-toggle').addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-        });
+    document.querySelector('.dark-mode-toggle').addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+    });
 
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
-            this.closest('.card').classList.remove('flipped');
-        });
-    </script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for your message! I will get back to you soon.');
+        this.reset();
+        this.closest('.card').classList.remove('flipped');
+    });
+</script>
 </body>
 </html>
