@@ -125,9 +125,11 @@
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             padding: 20px;
+            max-height: 80vh;
+            overflow-y: auto;
         }
         
         .project-item {
@@ -140,6 +142,7 @@
         .project-item h3 {
             margin-top: 0;
             color: var(--title-color);
+            font-size: 1.2rem;
         }
         
         .project-image {
@@ -163,6 +166,15 @@
             left: 0;
             width: 100%;
             height: 100%;
+        }
+        
+        .project-item p {
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+        
+        .card-back {
+            overflow-y: auto;
         }
         
         .skills-grid {
@@ -404,7 +416,7 @@
                         <div class="project-grid">
                             <div class="project-item">
                                 <h3>B2B Landing Page</h3>
-                                <img src="path/to/b2b-landing-page-image.jpg" alt="B2B Landing Page" class="project-image">
+                                <img src="https://raw.githubusercontent.com/yourusername/your-repo-name/main/images/b2b-landing-page-image.jpg" alt="B2B Landing Page" class="project-image">
                                 <p>Implemented and coded a B2B eCommerce Platform landing page, focusing on user experience and conversion optimization.</p>
                             </div>
                             <div class="project-item">
@@ -413,6 +425,20 @@
                                     <iframe width="560" height="315" src="https://www.youtube.com/embed/CfnPR3P3sBk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                 </div>
                                 <p>Developed a key feature for an eCommerce platform, enhancing user interaction and functionality.</p>
+                            </div>
+                            <div class="project-item">
+                                <h3>Personalized B2B Emails</h3>
+                                <div class="video-container">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/adc0g6k7ZpI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                </div>
+                                <p>Implemented a system for sending personalized B2B emails, matching them to statuses in Unleashed to notify customers about their order status.</p>
+                            </div>
+                            <div class="project-item">
+                                <h3>New B2B Portal Page Preview</h3>
+                                <div class="video-container">
+                                    <iframe src="https://www.loom.com/embed/e9cc125f7173437b9394223af51ae2b7" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                </div>
+                                <p>Developed and previewed a new B2B portal page, enhancing the user interface and functionality for B2B customers.</p>
                             </div>
                         </div>
                         <button class="back-btn">Back</button>
